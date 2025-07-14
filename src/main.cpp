@@ -4,31 +4,24 @@
 #include <Adafruit_NeoPixel.h>
 
 #include "defines.h"
+#include "screens/screens.h"
 
-Adafruit_NeoMatrix *matrix = new Adafruit_NeoMatrix(mw, mh, 
-  PIN,
-  NEO_MATRIX_BOTTOM     + NEO_MATRIX_RIGHT +
-    NEO_MATRIX_COLUMNS + NEO_MATRIX_ZIGZAG,
-  NEO_GRB            + NEO_KHZ800 );
+Adafruit_NeoMatrix *matrix;
+
+int frame = 0;
 
 void setup() {
   Serial.begin(9600);
 
-static const unsigned char PROGMEM image_Layer_3_bits[] = {0xf8,0xcc,0x78,0xcc,0xcc,0xcc,0xcc,0xcc,0xcc,0xcc,0xc0,0xcc,0xf8,0xcc,0x78,0x78,0xcc,0xcc,0x0c,0x30,0xcc,0xcc,0xcc,0x30,0xf8,0x78,0x78,0x30};
-
-
-// Layer 1
-matrix->setTextColor(0xE0C4);
-matrix->setTextWrap(false);
-matrix->setCursor(5, -7);
-matrix->print("f");
-
-// Layer 3
-matrix->drawBitmap(1, 1, image_Layer_3_bits, 30, 7, 0xE0C4);
-
-  matrix->show();
+  matrix = new Adafruit_NeoMatrix(MATRIX_WIDTH, MATRIX_HEIGHT, 
+    PIN,
+    NEO_MATRIX_BOTTOM     + NEO_MATRIX_RIGHT +
+      NEO_MATRIX_COLUMNS + NEO_MATRIX_ZIGZAG,
+    NEO_GRB            + NEO_KHZ800 );
 }
 
 void loop() {
+  free(*matrix, frame);
+  delay(100);
 }
 
