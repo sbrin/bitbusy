@@ -3,12 +3,7 @@
 #include <Adafruit_NeoMatrix.h>
 #include <Adafruit_NeoPixel.h>
 
-#define BRIGHTNESS 200
-
-#define PIN 2
-
-#define mw 32
-#define mh 8
+#include "defines.h"
 
 Adafruit_NeoMatrix *matrix = new Adafruit_NeoMatrix(mw, mh, 
   PIN,
