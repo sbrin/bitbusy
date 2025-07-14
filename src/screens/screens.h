@@ -9,3 +9,4 @@
 #include <Adafruit_NeoPixel.h>
 
 void free(Adafruit_NeoMatrix &matrix, int &frame);
+void busy(Adafruit_NeoMatrix &matrix, int &frame, int timeleft);

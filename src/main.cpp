@@ -21,7 +21,7 @@ void setup() {
 }
 
 void loop() {
-  free(*matrix, frame);
+  busy(*matrix, frame, 2222);
   delay(100);
 }
 
