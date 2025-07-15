@@ -37,13 +37,27 @@ void setup() {
   else{
     WiFi.mode(WIFI_STA);
     WiFi.begin(SSID, PASSWORD);
+    while (WiFi.status() != WL_CONNECTED) {
+      vTaskDelay(500);
+      Serial.print(".");
+    }
   }
+
+  Serial.println("");
+  Serial.println("WiFi initialized");
+  Serial.print("IP address: ");
+  if(AP) { 
+    Serial.println(WiFi.localIP()); 
+  }
+  else { 
+    Serial.println(WiFi.softAPIP()); 
+  }
+
+
 }
 
 void loop() {
   busy(*matrix, frame, 899);
   vTaskDelay(50);
-
-
 }
 
