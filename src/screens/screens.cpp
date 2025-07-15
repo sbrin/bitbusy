@@ -30,6 +30,15 @@ void free(Adafruit_NeoMatrix &matrix, int &frame){
 
 void busy(Adafruit_NeoMatrix &matrix, int &frame, int timeleft){
     matrix.clear();
+    int minutes = timeleft / 60;
+    int seconds = timeleft % 60;
+
+    String time = String(minutes) + ':' + String(seconds);
+
+    if(seconds / 10 <= 0) {
+        time += '0';
+    }
+
     if(frame < 68){
         if(frame < 60){
             matrix.drawBitmap(1 + frame, 1, working, 30, 7, COLOR_RED);
@@ -42,20 +51,20 @@ void busy(Adafruit_NeoMatrix &matrix, int &frame, int timeleft){
         matrix.setTextColor(COLOR_RED);
         matrix.setTextWrap(false);
         matrix.setCursor(-67 + frame, 1);
-        matrix.print("23:59");
+        matrix.print(time);
     }   
     else if(frame < 101){
         matrix.setTextColor(COLOR_RED);
         matrix.setTextWrap(false);
         matrix.setCursor(1, 1);
-        matrix.print("23:59");
+        matrix.print(time);
     }
     else if(frame < 136){
         matrix.drawBitmap(-135 + frame, 1, working, 30, 7, COLOR_RED);
         matrix.setTextColor(COLOR_RED);
         matrix.setTextWrap(false);
         matrix.setCursor(-100 + frame, 1);
-        matrix.print("23:59");
+        matrix.print(time);
     }
     else if(frame < 168){
         matrix.drawBitmap(1, 1, working, 30, 7, COLOR_RED);
@@ -64,6 +73,7 @@ void busy(Adafruit_NeoMatrix &matrix, int &frame, int timeleft){
         frame = 0;
         matrix.drawBitmap(1, 1, working, 30, 7, COLOR_RED);
     }
+    
     matrix.show();
     frame += 1;
 }

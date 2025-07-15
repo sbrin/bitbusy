@@ -21,7 +21,7 @@ void setup() {
 }
 
 void loop() {
-  busy(*matrix, frame, 2222);
-  delay(100);
+  busy(*matrix, frame, 899);
+  vTaskDelay(50);
 }
 
