@@ -7,7 +7,7 @@
 <style>
 #timer {
   appearance: none; 
-  width: 310px;
+  width: 305px;
   height: 6px;
   background: #ff7c04;
   border-radius: 5px;
