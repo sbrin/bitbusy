@@ -24,6 +24,10 @@ export function start(){
     }, 1000);
 }
 
+export function hold(){
+    clearInterval(interval);
+}
+
 export function stop(){
     clearInterval(interval);
     time.set(get(settime));

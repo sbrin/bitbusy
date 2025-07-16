@@ -1,12 +1,16 @@
 <script lang="ts">
+  import { get } from "svelte/store";
   import { busy } from "../busy";
-  import { time, settime } from "../timer";
-
+  import { settime, time } from "../timer";
+  
   $: cl = $busy ? "#e01b24" : "#33d17a";
 
   function onInput(event: Event){
     const input = event.target as HTMLInputElement;
     settime.set(+input.value * 60);
+    if(!$busy){
+      time.set(get(settime));
+    }
   }
 </script>
 
