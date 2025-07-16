@@ -1,15 +1,16 @@
 <script lang="ts">
- 
+  import { busy } from "../busy";
+  $: cl = $busy ? "#e01b24" : "#33d17a";
 </script>
 
-<input type="range" id="timer" min="1" step="1" max="60">
+<input disabled={$busy} style="--timer-color: {cl};" type="range" id="timer" min="1" step="1" max="60">
 
 <style>
 #timer {
   appearance: none; 
-  width: 305px;
+  width: 280px;
   height: 6px;
-  background: #ff7c04;
+  background: var(--timer-color);
   border-radius: 5px;
   outline: none;
   cursor: pointer;
@@ -20,7 +21,7 @@
   height: 24px;
   width: 24px;
   background: black;
-  border: 2px solid #ff7c04;
+  border: 2px solid var(--timer-color);
   border-radius: 50%;
   cursor: pointer; 
 }
@@ -29,7 +30,7 @@
   height: 16px;
   width: 16px;
   background: black;
-  border: 2px solid #ff7c04;
+  border: 2px solid var(--timer-color);
   border-radius: 50%;
   cursor: pointer;
 }
