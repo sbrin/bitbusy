@@ -1,7 +1,11 @@
 import { writable, get } from "svelte/store";
+import { busy } from "./busy";
 
-export var pause = writable(false);
+export const pause = writable(true);
 
 export function toggle(){
-    pause.set(!get(pause));
+    if(get(busy) || !get(pause)){
+        pause.set(!get(pause));
+        busy.set(get(pause));
+    }
 }

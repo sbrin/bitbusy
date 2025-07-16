@@ -1,9 +1,16 @@
 <script lang="ts">
   import { busy } from "../busy";
+  import { time, settime } from "../timer";
+
   $: cl = $busy ? "#e01b24" : "#33d17a";
+
+  function onInput(event: Event){
+    const input = event.target as HTMLInputElement;
+    settime.set(+input.value * 60);
+  }
 </script>
 
-<input disabled={$busy} style="--timer-color: {cl};" type="range" id="timer" min="1" step="1" max="60">
+<input oninput={onInput} disabled={$busy} style="--timer-color: {cl};" type="range" id="timer" min="0" step="1" max="60">
 
 <style>
 #timer {
