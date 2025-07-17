@@ -7,7 +7,7 @@ int Timer::left(){
 }
 
 bool Timer::busy(){ 
-    return (alrm) or (time == 0);
+    return active;
 }
 
 bool Timer::done(){

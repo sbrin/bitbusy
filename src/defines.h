@@ -6,5 +6,6 @@
 
 #define SSID "ssid"
 #define PASSWORD "password"
+
 #define HOSTNAME "bitbusy"
 #define OTA_PASSWORD "bitbusy"

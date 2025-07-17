@@ -23,9 +23,9 @@ server.on("/api/busy", HTTP_POST, [](AsyncWebServerRequest *request){}, NULL, [&
         timer.start();
     }
     else{
+        timer.set(0);
         timer.stop();
     }
 
-    String rs = doc["busy"];
-    request->send(200, "text/plain", rs);
+    request->send(200, "text/plain", String(timer.busy()));
 });}
