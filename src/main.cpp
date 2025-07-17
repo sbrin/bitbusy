@@ -32,7 +32,7 @@ void setup() {
   
   Serial.println("Matrix initialized");
 
-  timer = new Timer(0, millis());
+  timer = new Timer(1800, millis());
 
   WiFi.setHostname(HOSTNAME);
 
@@ -75,11 +75,11 @@ void setup() {
 }
 
 void loop() {
+  timer->tick();
   ArduinoOTA.handle();
   if (millis() - prev > 50) {
     prev = millis();
     select(*matrix, frame, timer->busy(), timer->left());
-    timer->tick();
   }
 }
 

@@ -2,6 +2,12 @@
   import Busy from './lib/Busy.svelte'
   import Pause from './lib/Pause.svelte'
   import Clock from './lib/Clock.svelte';
+  import { load } from './main';
+  import { onMount } from 'svelte';
+  import { tick } from 'svelte';
+
+
+  onMount(load);
 </script>
 
 <main class="bg-neutral-900">

@@ -1,11 +1,12 @@
 import { writable, get } from "svelte/store";
 import { pause } from "./pause";
-import { start, stop, settime } from "./timer";
+import { start, stop, settime, time } from "./timer";
 
 export const busy = writable(false);
 
 export async function toggle(){
     if(get(pause)){
+        time.set(get(settime));
         busy.set(!get(busy));
         pause.set(true);
         if(get(busy)){

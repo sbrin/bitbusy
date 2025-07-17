@@ -11,7 +11,7 @@ bool Timer::busy(){
 }
 
 void Timer::refresh(){
-    active = millis();
+    mils = millis();
 }
 
 void Timer::tick(){
@@ -27,6 +27,7 @@ void Timer::tick(){
 
 void Timer::start(){
     active = true;
+    refresh();
 }
 
 void Timer::stop(){

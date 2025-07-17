@@ -1,26 +1,35 @@
 import { writable, get } from "svelte/store";
+import { busy } from "./busy";
+import { tick } from "svelte";
+import { derived } from "svelte/store";
 
 let interval: ReturnType<typeof setInterval>;
 
 export const settime = writable(1800);
 export const time = writable(1800);
 
-export function timeString(){
-    const minutes = Math.floor(get(time) / 60).toString().padStart(2, "0");
-    const seconds = (get(time) % 60).toString().padStart(2, "0");
-    return `${minutes}:${seconds}`;
-}
+export const timeString = derived(time, ($time) => {
+  if($time > 0){
+    const minutes = Math.floor($time / 60);
+    const seconds = $time % 60;
+    return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  }
+    const minutes = Math.floor(get(settime) / 60);
+    const seconds = get(settime) % 60;
+    return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+});
 
-export function start(){
-    interval = setInterval(() => {
+export async function start(){
+    interval = setInterval(async () => {
       time.update((current) => {
         if (current <= 1) {
-          clearInterval(interval);
-          time.set(get(settime));
+          busy.set(!get(busy));
+          stop();
           return 0;
         }
         return current - 1;
       });
+      await tick();
     }, 1000);
 }
 

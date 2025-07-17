@@ -14,7 +14,7 @@
   }
 </script>
 
-<input oninput={onInput} disabled={$busy} style="--timer-color: {cl};" type="range" id="timer" min="0" step="1" max="60">
+<input oninput={onInput} disabled={$busy} style="--timer-color: {cl};" type="range" id="timer" min="0" step="1" value={settime} max="60">
 
 <style>
 #timer {
