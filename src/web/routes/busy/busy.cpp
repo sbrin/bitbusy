@@ -20,6 +20,7 @@ server.on("/api/busy", HTTP_POST, [](AsyncWebServerRequest *request){}, NULL, [&
 
     if(doc["busy"].as<bool>()){
         timer.set(doc["time"].as<int>());
+        timer.refresh();
         timer.start();
     }
     else{
@@ -27,5 +28,5 @@ server.on("/api/busy", HTTP_POST, [](AsyncWebServerRequest *request){}, NULL, [&
         timer.stop();
     }
 
-    request->send(200, "text/plain", String(timer.busy()));
+    request->send(200, "text/plain", String(timer.left()));
 });}

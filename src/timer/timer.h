@@ -6,7 +6,6 @@ class Timer{
     private:
         int time;
         bool active;
-        bool alrm;
         unsigned long mils;
     public:
         Timer(int, unsigned long);
@@ -15,6 +14,6 @@ class Timer{
         void set(int);
         void stop();
         void tick();
-        bool done();
         bool busy();
+        void refresh();
 };

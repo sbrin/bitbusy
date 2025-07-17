@@ -1,6 +1,6 @@
 #include "timer.h"
 
-Timer::Timer(int seconds, unsigned long init_millis): time(seconds), mils(init_millis), active(false), alrm(false) {}
+Timer::Timer(int seconds, unsigned long init_millis): time(seconds), mils(init_millis), active(false) {}
 
 int Timer::left(){
     return time;
@@ -10,8 +10,8 @@ bool Timer::busy(){
     return active;
 }
 
-bool Timer::done(){
-    return alrm;
+void Timer::refresh(){
+    active = millis();
 }
 
 void Timer::tick(){
@@ -21,21 +21,16 @@ void Timer::tick(){
 
         if(time <= 0){
             active = false;
-            alrm = true;
         }
     }
 }
 
 void Timer::start(){
-    if(!alrm){
-        active = true;
-    }
+    active = true;
 }
 
 void Timer::stop(){
-    if(!alrm){
-        active = false;
-    }
+    active = false;
 }
 
 void Timer::set(int newtime){
