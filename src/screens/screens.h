@@ -8,6 +8,7 @@
 #include <Adafruit_NeoMatrix.h>
 #include <Adafruit_NeoPixel.h>
 
+void connecting(Adafruit_NeoMatrix &matrix);
 void free(Adafruit_NeoMatrix &matrix, int &frame);
 void busy(Adafruit_NeoMatrix &matrix, int &frame, int timeleft);
 

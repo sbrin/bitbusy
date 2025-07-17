@@ -2,4 +2,7 @@
 #include <ESPAsyncWebServer.h>
 #include <Arduino.h>
 
-void setup_routes(AsyncWebServer);
+#include "timer/timer.h"
+#include "routes/busy/busy.h"
+
+void setup_routes(AsyncWebServer, Timer);

@@ -16,4 +16,5 @@ class Timer{
         void stop();
         void tick();
         bool done();
+        bool busy();
 };

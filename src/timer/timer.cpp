@@ -6,6 +6,10 @@ int Timer::left(){
     return time;
 }
 
+bool Timer::busy(){ 
+    return (alrm) or (time == 0);
+}
+
 bool Timer::done(){
     return alrm;
 }
