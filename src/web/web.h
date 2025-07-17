@@ -4,5 +4,6 @@
 
 #include "timer/timer.h"
 #include "routes/busy/busy.h"
+#include "routes/app/app.h"
 
-void setup_routes(AsyncWebServer, Timer);
+void setup_routes(AsyncWebServer &server, Timer &timer);

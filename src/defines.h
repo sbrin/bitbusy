@@ -1,4 +1,4 @@
-#define BRIGHTNESS 100
+#define BRIGHTNESS 50
 #define PIN 2
 
 #define MATRIX_WIDTH 32 
@@ -6,6 +6,5 @@
 
 #define SSID "ssid"
 #define PASSWORD "password"
-
 #define HOSTNAME "bitbusy"
 #define OTA_PASSWORD "bitbusy"

@@ -6,10 +6,12 @@
 #include <WiFi.h>
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
+#include <LittleFS.h>
 
 #include "defines.h"
 #include "screens/screens.h"
 #include "timer/timer.h"
+#include "web/web.h"
 
 Adafruit_NeoMatrix *matrix;
 Timer *timer;
@@ -20,7 +22,8 @@ unsigned long prev = 0;
 
 void setup() {
   Serial.begin(9600);
-
+  LittleFS.begin();
+  
   matrix = new Adafruit_NeoMatrix(MATRIX_WIDTH, MATRIX_HEIGHT, 
     PIN,
     NEO_MATRIX_BOTTOM     + NEO_MATRIX_RIGHT +
@@ -64,7 +67,9 @@ void setup() {
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP()); 
   
+  setup_routes(server, *timer);
   server.begin();
+
   Serial.println("Server started");
   Serial.println("Setup complete");
 }
@@ -74,6 +79,7 @@ void loop() {
   if (millis() - prev > 50) {
     prev = millis();
     select(*matrix, frame, timer->busy(), timer->left());
+    timer->tick();
   }
 }
 
