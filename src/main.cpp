@@ -3,7 +3,6 @@
 #include <Adafruit_NeoMatrix.h>
 #include <Adafruit_NeoPixel.h>
 #include <WiFi.h>
-#include <DNSServer.h>
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 
@@ -12,7 +11,6 @@
 
 Adafruit_NeoMatrix *matrix;
 
-DNSServer dnsServer;
 AsyncWebServer server(80);
 
 int frame = 0;
@@ -25,35 +23,25 @@ void setup() {
     NEO_MATRIX_BOTTOM     + NEO_MATRIX_RIGHT +
       NEO_MATRIX_COLUMNS + NEO_MATRIX_ZIGZAG,
     NEO_GRB            + NEO_KHZ800 );
+  
+  Serial.println("Matrix initialized");
 
-      WiFi.setHostname("bitbusy");
+  WiFi.setHostname("bitbusy");
 
-  if(AP){
-    WiFi.mode(WIFI_AP);
-    WiFi.softAP(SSID, PASSWORD, CHANNEL, HIDDEN);
-    dnsServer.setErrorReplyCode(DNSReplyCode::NoError);
-    dnsServer.start(53, "*", WiFi.softAPIP());
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(SSID, PASSWORD);
+  while (WiFi.status() != WL_CONNECTED) {
+    vTaskDelay(500);
+    Serial.print(".");
   }
-  else{
-    WiFi.mode(WIFI_STA);
-    WiFi.begin(SSID, PASSWORD);
-    while (WiFi.status() != WL_CONNECTED) {
-      vTaskDelay(500);
-      Serial.print(".");
-    }
-  }
-
   Serial.println("");
   Serial.println("WiFi initialized");
   Serial.print("IP address: ");
-  if(AP) { 
-    Serial.println(WiFi.localIP()); 
-  }
-  else { 
-    Serial.println(WiFi.softAPIP()); 
-  }
-
-
+  Serial.println(WiFi.localIP()); 
+  
+  server.begin();
+  Serial.println("Server started");
+  Serial.println("Setup complete");
 }
 
 void loop() {
