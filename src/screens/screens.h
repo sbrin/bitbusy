@@ -10,3 +10,5 @@
 
 void free(Adafruit_NeoMatrix &matrix, int &frame);
 void busy(Adafruit_NeoMatrix &matrix, int &frame, int timeleft);
+
+void select(Adafruit_NeoMatrix &matrix, int &frame, bool free, int timeleft);

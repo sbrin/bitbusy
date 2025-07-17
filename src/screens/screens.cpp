@@ -77,3 +77,14 @@ void busy(Adafruit_NeoMatrix &matrix, int &frame, int timeleft){
     matrix.show();
     frame += 1;
 }
+
+void select(Adafruit_NeoMatrix &matrix, int &frame, bool state, int timeleft){
+    if(state){
+        free(matrix, frame);
+    }
+    else{
+        if(timeleft != -1){
+            busy(matrix, frame, timeleft);
+        }    
+    }
+}

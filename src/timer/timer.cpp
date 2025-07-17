@@ -33,3 +33,9 @@ void Timer::stop(){
         active = false;
     }
 }
+
+void Timer::set(int newtime){
+    if(!active){
+        time = newtime;
+    }
+}

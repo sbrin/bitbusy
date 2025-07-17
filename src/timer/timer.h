@@ -12,6 +12,7 @@ class Timer{
         Timer(int, unsigned long);
         int left();
         void start();
+        void set(int);
         void stop();
         void tick();
         bool done();

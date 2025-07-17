@@ -8,9 +8,10 @@
 
 #include "defines.h"
 #include "screens/screens.h"
+#include "timer/timer.h"
 
 Adafruit_NeoMatrix *matrix;
-
+Timer *timer;
 AsyncWebServer server(80);
 
 int frame = 0;
@@ -25,6 +26,8 @@ void setup() {
     NEO_GRB            + NEO_KHZ800 );
   
   Serial.println("Matrix initialized");
+
+  timer = new Timer(0, millis());
 
   WiFi.setHostname("bitbusy");
 
@@ -45,7 +48,7 @@ void setup() {
 }
 
 void loop() {
-  busy(*matrix, frame, 899);
+  select(*matrix, frame, timer->done(), timer->left());
   vTaskDelay(50);
 }
 
