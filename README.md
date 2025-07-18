@@ -11,4 +11,4 @@ This device works like a timer: You choose time between 0-60 minutes and hit the
 
 
 ### Technologies
-Made using platformio and arduino framework. Images and animations made in https://lopaka.app . Uses ESPAsyncWebServer and ArduinoJSON for web stuff and Adafruit GFX for graphics. Webpage made in svelte and typescript.
+Project written in C++ using PlatformIO and Arduino framework. Images and animations made in https://lopaka.app . Uses ESPAsyncWebServer and ArduinoJSON for web stuff and Adafruit GFX for graphics. Webpage written in Svelte and Typescript.
