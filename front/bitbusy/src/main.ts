@@ -2,9 +2,10 @@ import { mount } from 'svelte'
 import { busy } from './busy'
 import { start } from './timer'
 import { time } from './timer'
-
 import './app.css'
 import App from './App.svelte'
+import { get } from 'svelte/store'
+import { select } from './select'
 
 const app = mount(App, {
   target: document.getElementById('app')!,
@@ -25,7 +26,12 @@ export async function load(){
       
       if(data.busy){
         time.set(data.time);
-        start();
+        if(get(time) == -1){
+          select.set(0);
+        }
+        else{
+          start();
+        }
       }
   }
   catch (error){

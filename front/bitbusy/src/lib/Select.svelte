@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { select, toggle } from "../select";
+    import { select } from "../select";
     import { settime, time } from "../timer";
-    import { busy } from "../busy";
+    import { busy, toggle } from "../busy";
     import { get } from "svelte/store";
 
     function IO(){

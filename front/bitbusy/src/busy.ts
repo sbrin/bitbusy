@@ -1,6 +1,6 @@
 import { writable, get } from "svelte/store";
 import { pause } from "./pause";
-import { start, stop, settime, time } from "./timer";
+import { start, stop, time } from "./timer";
 
 export const busy = writable(false);
 
