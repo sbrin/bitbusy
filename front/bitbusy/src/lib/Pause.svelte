@@ -9,4 +9,4 @@
     }
 </script>
 
-<button on:click={onClick} class:collapsed={$select == 0} aria-label="pause" class="cursor-pointer"><img class="w-xs" src={img} alt=pause></button>
+<button on:click={onClick} class:collapse={$select == 0} aria-label="pause" class="cursor-pointer"><img class="w-xs" src={img} alt=pause></button>

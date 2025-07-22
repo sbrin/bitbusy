@@ -1,3 +1,3 @@
 import { writable } from "svelte/store";
 
-export const select = writable(1);
+export const select = writable(0);
