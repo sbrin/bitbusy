@@ -6,18 +6,18 @@
 
     function IO(){
         select.set(0);
-        time.set(-1);
         if(get(busy)){
             toggle();
         }
+        time.set(-1);
     }
 
     function Timer(){
         select.set(1);  
-        time.set(get(settime));
         if(get(busy)){
             toggle();
         }
+        time.set(get(settime));
     }
 </script>
 

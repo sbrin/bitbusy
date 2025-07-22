@@ -6,7 +6,6 @@ export const busy = writable(false);
 
 export async function toggle(){
     if(get(pause)){
-        time.set(get(settime));
         busy.set(!get(busy));
         pause.set(true);
         if(get(busy)){
