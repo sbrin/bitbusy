@@ -19,11 +19,12 @@ void busy(AsyncWebServer &server, Timer &timer){
         }
 
         if(doc["busy"].as<bool>()){
-            timer.set(doc["time"].as<int>());
-            timer.start();
+            if(doc["time"].as<int>() != -1){
+                timer.set(doc["time"].as<int>());
+                timer.start();
+            }
         }
         else{
-            timer.set(1800);
             timer.stop();
         }
 
