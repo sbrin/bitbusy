@@ -5,6 +5,7 @@
   import { load } from './main';
   import { onMount } from 'svelte';
   import { tick } from 'svelte';
+    import Select from './lib/Select.svelte';
 
 
   onMount(load);
@@ -25,6 +26,7 @@
    </div>
       <div class="flex flex-col items-center gap-2">
         <Clock />
+        <Select />
         <Busy />
         <Pause />
     </div>
