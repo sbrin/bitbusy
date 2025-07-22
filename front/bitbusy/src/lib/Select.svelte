@@ -1,12 +1,23 @@
 <script lang="ts">
-    import { select } from "../select";
+    import { select, toggle } from "../select";
+    import { settime, time } from "../timer";
+    import { busy } from "../busy";
+    import { get } from "svelte/store";
 
     function IO(){
         select.set(0);
+        time.set(-1);
+        if(get(busy)){
+            toggle();
+        }
     }
 
     function Timer(){
-        select.set(1);
+        select.set(1);  
+        time.set(get(settime));
+        if(get(busy)){
+            toggle();
+        }
     }
 </script>
 

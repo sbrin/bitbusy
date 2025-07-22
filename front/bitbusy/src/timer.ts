@@ -20,6 +20,7 @@ export const timeString = derived(time, ($time) => {
 });
 
 export async function start(){
+  if(get(time) != -1){
     interval = setInterval(async () => {
       time.update((current) => {
         if (current <= 1) {
@@ -31,6 +32,7 @@ export async function start(){
       });
       await tick();
     }, 1000);
+  }
 }
 
 export function hold(){

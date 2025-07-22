@@ -29,7 +29,7 @@ export async function toggle(){
             },
             body: JSON.stringify({
                 "busy": get(busy),
-                "time": get(settime)
+                "time": get(time)
             })
         });
         if (!response.ok) {

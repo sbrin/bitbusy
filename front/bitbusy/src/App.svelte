@@ -4,8 +4,7 @@
   import Clock from './lib/Clock.svelte';
   import { load } from './main';
   import { onMount } from 'svelte';
-  import { tick } from 'svelte';
-    import Select from './lib/Select.svelte';
+  import Select from './lib/Select.svelte';
 
 
   onMount(load);
