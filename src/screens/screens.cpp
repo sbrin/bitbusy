@@ -84,23 +84,16 @@ void busy(Adafruit_NeoMatrix &matrix, int &frame){
     matrix.clear();
     matrix.drawBitmap(0, 0, fill, 32, 8, COLOR_RED);
 
-    if(frame < 68){
-        if(frame < 60){
-            matrix.drawBitmap(1 + frame, 1, working, 30, 7, COLOR_TEXT);
-        }
-        else{
-            matrix.drawBitmap(-100 + frame, 1, working, 30, 7, COLOR_TEXT);
-        }
+    if(frame < 70){
+        matrix.drawBitmap(-68 + frame, 1, working, 30, 7, COLOR_TEXT);
+        matrix.drawBitmap(1 + frame, 1, working, 30, 7, COLOR_TEXT);
         matrix.drawBitmap(-35 + frame, 1, restricted, 7, 7, COLOR_TEXT);
         matrix.drawBitmap(-26 + frame, 1, dnd, 22, 7, COLOR_TEXT);
     }   
-    else if(frame < 136){
-        matrix.drawBitmap(-135 + frame, 1, working, 30, 7, COLOR_TEXT);
-    }
-    else if(frame < 168){
+    else if (frame < 100){
         matrix.drawBitmap(1, 1, working, 30, 7, COLOR_TEXT);
     }
-    else{
+    else {
         frame = 0;
         matrix.drawBitmap(1, 1, working, 30, 7, COLOR_TEXT);
     }
@@ -110,7 +103,7 @@ void busy(Adafruit_NeoMatrix &matrix, int &frame){
 }
 
 void select(Adafruit_NeoMatrix &matrix, int &frame, bool state, int timeleft){
-    /* if(!state){
+    if(!state){
         free(matrix, frame);
     }
     else{
@@ -120,6 +113,5 @@ void select(Adafruit_NeoMatrix &matrix, int &frame, bool state, int timeleft){
         else{
             busy(matrix, frame);
         }    
-    } */
-   busy(matrix, frame);
+    } 
 }
