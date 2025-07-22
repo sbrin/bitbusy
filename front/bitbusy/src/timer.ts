@@ -2,6 +2,7 @@ import { writable, get } from "svelte/store";
 import { busy } from "./busy";
 import { tick } from "svelte";
 import { derived } from "svelte/store";
+import { select } from "./select";
 
 let interval: ReturnType<typeof setInterval>;
 
@@ -41,5 +42,7 @@ export function hold(){
 
 export function stop(){
     clearInterval(interval);
-    time.set(get(settime));
+    if(get(select) != 0){
+      time.set(get(settime));
+    }
 }
