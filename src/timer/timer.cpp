@@ -15,12 +15,14 @@ void Timer::refresh(){
 }
 
 void Timer::tick(){
-    if(active && millis() - mils >= 1000){
-        time -= 1;
-        mils = millis();
+    if(time != -1){
+        if(active && millis() - mils >= 1000){
+            time -= 1;
+            mils = millis();
 
-        if(time <= 0){
-            active = false;
+            if(time <= 0){
+                active = false;
+            }
         }
     }
 }
