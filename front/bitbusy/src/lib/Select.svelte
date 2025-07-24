@@ -19,13 +19,20 @@
         }
         time.set(get(settime));
     }
+
+    function Pomodoro(){
+        select.set(2);
+    }
 </script>
 
 <div class="flex flex-row justify-center bg-black rounded-2xl items-center gap-5 w-full p-5" style="image-rendering: pixelated;">
     <button on:click={IO} aria-label="IO">
-        <img class="h-20" class:saturate-5={$select == 1} alt="IO" src="IO.png">
+        <img class="h-20" class:saturate-5={$select != 0} alt="IO" src="IO.png">
     </button>
     <button on:click={Timer} aria-label="Timer">
-        <img class="h-20" class:saturate-5={$select == 0} alt="Timer" src="timer.png">
+        <img class="h-20" class:saturate-5={$select != 1} alt="Timer" src="timer.png">
+    </button>
+    <button on:click={Pomodoro} aria-label="Pomodoro">
+        <img class="h-20" class:saturate-5={$select != 2} alt="Pomodoro" src="tomato.png"> 
     </button>
 </div>
