@@ -1,8 +1,10 @@
 import { pause } from "./pause";
-import { get } from "svelte/store";
+import { get, writable } from "svelte/store";
 import { start, stop } from "./timer";
 import { busy } from "./busy";
 import { updateDevice } from "./update";
+
+export const pomobusy = writable(false);
 
 export async function toggle(){
     if(get(pause)){

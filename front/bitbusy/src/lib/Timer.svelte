@@ -2,19 +2,20 @@
   import { get } from "svelte/store";
   import { busy } from "../busy";
   import { settime, time } from "../timer";
-  
+  import { pomobusy } from "../pomodoro";
+
   $: cl = $busy ? "#e01b24" : "#33d17a";
 
   function onInput(event: Event){
     const input = event.target as HTMLInputElement;
     settime.set(+input.value * 60);
-    if(!$busy){
+    if(!$busy && !$pomobusy){
       time.set(get(settime));
     }
   }
 </script>
 
-<input oninput={onInput} disabled={$busy} style="--timer-color: {cl};" type="range" id="timer" min="0" step="1" value={settime} max="60">
+<input oninput={onInput} disabled={$busy || $pomobusy} style="--timer-color: {cl};" type="range" id="timer" min="0" step="1" value={settime} max="60">
 
 <style>
 #timer {

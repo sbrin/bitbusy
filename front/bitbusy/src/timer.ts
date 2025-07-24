@@ -3,7 +3,7 @@ import { busy } from "./busy";
 import { tick } from "svelte";
 import { derived } from "svelte/store";
 import { select } from "./select";
-import { toggle } from "./pomodoro";
+import { pomobusy, toggle } from "./pomodoro";
 
 export let interval: ReturnType<typeof setInterval>;
 
@@ -28,6 +28,7 @@ export async function start(){
         if (current <= 1) {
           stop();
           if(get(select) == 2){
+            pomobusy.set(true);
             toggle();
             if(!get(busy)){
               time.set(get(settime) / 5);
