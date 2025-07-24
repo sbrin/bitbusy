@@ -1,7 +1,8 @@
 import { pause } from "./pause";
 import { get } from "svelte/store";
-import { time, start, stop } from "./timer";
+import { start, stop } from "./timer";
 import { busy } from "./busy";
+import { updateDevice } from "./update";
 
 export async function toggle(){
     if(get(pause)){
@@ -14,22 +15,5 @@ export async function toggle(){
         pause.set(!get(pause));
     }
 
-    try{
-        const response = await fetch('/api/busy', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "busy": get(busy),
-                "time": get(time)
-            })
-        });
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-    }
-    catch (error){
-        console.error('Error sending busy:', error);
-    }
+    await updateDevice();
 }
