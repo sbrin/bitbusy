@@ -22,6 +22,10 @@
 
     function Pomodoro(){
         select.set(2);
+        if(get(busy)){
+            toggle();
+        }
+        time.set(get(settime));
     }
 </script>
 
