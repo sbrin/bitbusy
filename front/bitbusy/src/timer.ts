@@ -32,10 +32,11 @@ export async function start(){
             if(!get(busy)){
               time.set(get(settime) / 5);
             }
-            else{
+            else{ 
               time.set(get(settime));
             }
             start();
+            return get(time);
           }
           return 0;
         }
