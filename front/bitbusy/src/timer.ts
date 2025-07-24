@@ -28,8 +28,8 @@ export async function start(){
         if (current <= 1) {
           stop();
           if(get(select) == 2){
-            pomobusy.set(true);
             toggle();
+            pomobusy.set(true);
             if(!get(busy)){
               time.set(get(settime) / 5);
             }

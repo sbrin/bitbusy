@@ -9,22 +9,24 @@ export const busy = writable(false);
 export async function toggle(){
     if(get(pomobusy)){
         pomobusy.set(false);
+        busy.set(false);
         stop();
     }
-    if(get(pause)){
-        busy.set(!get(busy));
-        pause.set(true);
-        if(get(busy)){
-            start();
+    else{
+        if(get(pause)){
+            busy.set(!get(busy));
+            pause.set(true);
+            if(get(busy)){
+                start();
+            }
+            else{
+                stop();
+            }
         }
         else{
             stop();
+            pause.set(!get(pause));
         }
     }
-    else{
-        stop();
-        pause.set(!get(pause));
-    }
-
     await updateDevice();
 }
