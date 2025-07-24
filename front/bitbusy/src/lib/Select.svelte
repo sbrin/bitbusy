@@ -29,7 +29,7 @@
     }
 </script>
 
-<div class="flex flex-row justify-center bg-black rounded-2xl items-center gap-5 w-full p-5" style="image-rendering: pixelated;">
+<div class="flex flex-row justify-center bg-black rounded-2xl items-center gap-5 w-full p-3" style="image-rendering: pixelated;">
     <button on:click={IO} aria-label="IO">
         <img class="h-20" class:saturate-5={$select != 0} alt="IO" src="IO.png">
     </button>
@@ -37,6 +37,6 @@
         <img class="h-20" class:saturate-5={$select != 1} alt="Timer" src="timer.png">
     </button>
     <button on:click={Pomodoro} aria-label="Pomodoro">
-        <img class="h-20" class:saturate-5={$select != 2} alt="Pomodoro" src="tomato.png"> 
+        <img class="h-20 mb-1.5" class:saturate-5={$select != 2} alt="Pomodoro" src="tomato.png"> 
     </button>
 </div>
