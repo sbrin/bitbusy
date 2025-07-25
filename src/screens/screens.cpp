@@ -1,5 +1,11 @@
 #include "screens.h"
 
+void connecting(Adafruit_NeoMatrix &matrix){
+    matrix.clear();
+    matrix.drawBitmap(0, 0, fill, 32, 8, COLOR_ORANGE);
+    matrix.drawBitmap(1, 1, wifi, 29, 7, COLOR_TEXT);
+}
+
 void free(Adafruit_NeoMatrix &matrix, int &frame){
     matrix.clear();
     matrix.drawBitmap(0, 0, fill, 32, 8, COLOR_GREEN);

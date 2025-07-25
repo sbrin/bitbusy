@@ -31,9 +31,11 @@ void setup() {
     NEO_GRB            + NEO_KHZ800 );
   
   matrix->setBrightness(BRIGHTNESS);
-  
+
   Serial.println("Matrix initialized");
 
+  connecting(*matrix);
+  
   timer = new Timer(1800, millis());
 
   WiFi.setHostname(HOSTNAME);
