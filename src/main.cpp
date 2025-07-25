@@ -30,6 +30,8 @@ void setup() {
       NEO_MATRIX_COLUMNS + NEO_MATRIX_ZIGZAG,
     NEO_GRB            + NEO_KHZ800 );
   
+  matrix->setBrightness(BRIGHTNESS);
+  
   Serial.println("Matrix initialized");
 
   timer = new Timer(1800, millis());
