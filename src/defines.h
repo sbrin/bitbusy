@@ -1,4 +1,4 @@
-#define BRIGHTNESS 1
+#define BRIGHTNESS 20
 #define PIN 2
 
 #define MATRIX_WIDTH 32 
