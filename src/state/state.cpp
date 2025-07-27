@@ -4,15 +4,8 @@ State::State(): state(false), pomodoro(false), busy_timer(false), frame(0), time
 
 void State::check(bool active, int time){
     timeleft = time;
-    if(active){
-        if(timeleft == -1){
-            busy_timer = true;
-        }
-        state = true;
-    }
-    else{
-        state = false;
-    }
+    busy_timer = timeleft == -1;
+    state = active;
 }
 
 void State::screen_select(Adafruit_NeoMatrix &matrix){
