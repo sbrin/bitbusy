@@ -5,12 +5,10 @@
 class Timer{
     private:
         int time;
-        bool pomodoro;
         bool active;
         unsigned long mils;
-        bool& state;
     public:
-        Timer(int, unsigned long, bool&);
+        Timer(int, unsigned long);
         int left();
         void start();
         void set(int);

@@ -5,4 +5,4 @@
 
 #include "timer/timer.h"
 
-void busy(AsyncWebServer &server, Timer &timer, bool &busy);
+void busy(AsyncWebServer &server, Timer &timer);
