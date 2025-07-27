@@ -20,5 +20,6 @@ class State{
         void setTime(int);
         bool getBusy();
         bool getPomodoro();
+        int getSettime();
         void screen_select(Adafruit_NeoMatrix &matrix);
 };

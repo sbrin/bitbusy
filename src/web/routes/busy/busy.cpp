@@ -39,6 +39,7 @@ void busy(AsyncWebServer &server, Timer &timer, State &state){
         doc["busy"] = state.getBusy();
         doc["time"] = timer.left();
         doc["pomodoro"] = state.getPomodoro();
+        doc["settime"] = state.getSettime();
         
         String response;
         serializeJson(doc, response);

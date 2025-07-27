@@ -59,3 +59,7 @@ void State::setBusy(bool j){
 void State::setTime(int j){
     settime = j;
 }
+
+int State::getSettime(){
+    return settime;
+}
