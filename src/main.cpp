@@ -20,6 +20,8 @@ AsyncWebServer server(80);
 int frame = 0;
 unsigned long prev = 0;
 
+bool state = false;
+
 void setup() {
   Serial.begin(9600);
   LittleFS.begin();
@@ -35,8 +37,8 @@ void setup() {
   Serial.println("Matrix initialized");
 
   connecting(*matrix);
-  
-  timer = new Timer(1800, millis());
+
+  timer = new Timer(1800, millis(), state);
 
   WiFi.setHostname(HOSTNAME);
 
@@ -71,7 +73,7 @@ void setup() {
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP()); 
   
-  setup_routes(server, *timer);
+  setup_routes(server, *timer, state);
   server.begin();
 
   Serial.println("Server started");
@@ -83,7 +85,7 @@ void loop() {
   ArduinoOTA.handle();
   if (millis() - prev > 50) {
     prev = millis();
-    select(*matrix, frame, timer->busy(), timer->left());
+    select(*matrix, frame, state, timer->left());
   }
 }
 
