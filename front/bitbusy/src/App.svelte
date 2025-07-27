@@ -5,7 +5,7 @@
   import { load } from './main';
   import { onMount } from 'svelte';
   import Select from './lib/Select.svelte';
-
+  import { select } from './select';
 
   onMount(load);
 </script>
@@ -24,10 +24,14 @@
       </div>
    </div>
       <div class="flex flex-col items-center gap-2">
-        <Clock />
+        {#if $select != 0}
+          <Clock />
+        {/if}
         <Select />
         <Busy />
+        {#if $select != 0}
         <Pause />
+        {/if}
     </div>
   </div>
 </main>
