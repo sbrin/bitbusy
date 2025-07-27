@@ -83,7 +83,7 @@ void setup() {
 
 void loop() {
   timer->tick();
-  state->check(timer->busy(), timer->left());
+  state->check(*timer);
   ArduinoOTA.handle();
   if (millis() - prev > 50) {
     prev = millis();

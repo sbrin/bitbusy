@@ -12,19 +12,22 @@ void busy(AsyncWebServer &server, Timer &timer, State &state){
         DeserializationError error = deserializeJson(doc, body);
 
         if (error){
-        Serial.print(F("deserializeJson() failed: "));
-        Serial.println(error.f_str());
-        request->send(400, "text/plain", "Bad Request");
-        return;
+            Serial.print(F("deserializeJson() failed: "));
+            Serial.println(error.f_str());
+            request->send(400, "text/plain", "Bad Request");
+            return;
         }
 
         state.setBusy(doc["busy"].as<bool>());
+        state.setTime(doc["time"].as<int>());
 
         if(doc["busy"].as<bool>()){
+            state.setPomodoro(doc["pomodoro"].as<bool>());
             timer.set(doc["time"].as<int>());
             timer.start();    
         }
         else{
+            state.setPomodoro(false);
             timer.stop();
         }
 
@@ -35,7 +38,8 @@ void busy(AsyncWebServer &server, Timer &timer, State &state){
         JsonDocument doc;
         doc["busy"] = state.getBusy();
         doc["time"] = timer.left();
-
+        doc["pomodoro"] = state.getPomodoro();
+        
         String response;
         serializeJson(doc, response);
 
