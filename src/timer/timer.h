@@ -8,7 +8,7 @@ class Timer{
         bool active;
         unsigned long mils;
     public:
-        Timer(int, unsigned long);
+        Timer(int);
         int left();
         void start();
         void set(int);

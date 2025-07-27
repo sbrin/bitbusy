@@ -1,7 +1,7 @@
 #include "busy.h"
 
-void busy(AsyncWebServer &server, Timer &timer){
-    server.on("/api/busy", HTTP_POST, [](AsyncWebServerRequest *request){}, NULL, [&timer](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total){
+void busy(AsyncWebServer &server, Timer &timer, State &state){
+    server.on("/api/busy", HTTP_POST, [](AsyncWebServerRequest *request){}, NULL, [&timer, &state](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total){
         String body;
 
         for (size_t i = 0; i < len; i++) {
@@ -18,9 +18,11 @@ void busy(AsyncWebServer &server, Timer &timer){
         return;
         }
 
+        state.setBusy(doc["busy"].as<bool>());
+
         if(doc["busy"].as<bool>()){
             timer.set(doc["time"].as<int>());
-            timer.start();
+            timer.start();    
         }
         else{
             timer.stop();
@@ -29,9 +31,9 @@ void busy(AsyncWebServer &server, Timer &timer){
         request->send(200, "text/plain", String(timer.left()));
     });
 
-    server.on("/api/busy", HTTP_GET, [&timer](AsyncWebServerRequest *request){
+    server.on("/api/busy", HTTP_GET, [&timer, &state](AsyncWebServerRequest *request){
         JsonDocument doc;
-        doc["busy"] = timer.busy();
+        doc["busy"] = state.getBusy();
         doc["time"] = timer.left();
 
         String response;

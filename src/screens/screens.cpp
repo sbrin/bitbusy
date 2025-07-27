@@ -109,16 +109,3 @@ void busy(Adafruit_NeoMatrix &matrix, int &frame){
     frame += 1;
 }
 
-void select(Adafruit_NeoMatrix &matrix, int &frame, bool state, int timeleft){
-    if(!state){
-        free(matrix, frame);
-    }
-    else{
-        if(timeleft != -1){
-            busy_time(matrix, frame, timeleft);
-        }
-        else{
-            busy(matrix, frame);
-        }    
-    } 
-}

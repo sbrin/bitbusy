@@ -11,10 +11,12 @@
 #include "defines.h"
 #include "screens/screens.h"
 #include "timer/timer.h"
+#include "state/state.h"
 #include "web/web.h"
 
 Adafruit_NeoMatrix *matrix;
 Timer *timer;
+State *state;
 AsyncWebServer server(80);
 
 int frame = 0;
@@ -36,7 +38,8 @@ void setup() {
 
   connecting(*matrix);
   
-  timer = new Timer(1800, millis());
+  timer = new Timer(1800);
+  state = new State();
 
   WiFi.setHostname(HOSTNAME);
 
@@ -71,7 +74,7 @@ void setup() {
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP()); 
   
-  setup_routes(server, *timer);
+  setup_routes(server, *timer, *state);
   server.begin();
 
   Serial.println("Server started");
@@ -80,10 +83,11 @@ void setup() {
 
 void loop() {
   timer->tick();
+  state->check(timer->busy(), timer->left());
   ArduinoOTA.handle();
   if (millis() - prev > 50) {
     prev = millis();
-    select(*matrix, frame, timer->busy(), timer->left());
+    state->screen_select(*matrix);
   }
 }
 

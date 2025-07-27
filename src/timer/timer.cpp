@@ -1,6 +1,6 @@
 #include "timer.h"
 
-Timer::Timer(int seconds, unsigned long init_millis): time(seconds), mils(init_millis), active(false) {}
+Timer::Timer(int seconds): time(seconds), mils(millis()), active(false) {}
 
 int Timer::left(){
     return time;
