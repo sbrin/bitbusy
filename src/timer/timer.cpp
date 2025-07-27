@@ -1,13 +1,13 @@
 #include "timer.h"
 
-Timer::Timer(int seconds, unsigned long init_millis): time(seconds), mils(init_millis), active(false), busy(false), pomodoro(false) {}
+Timer::Timer(int seconds, unsigned long init_millis): time(seconds), mils(init_millis), active(false) {}
 
 int Timer::left(){
     return time;
 }
 
-bool Timer::state(){ 
-    return busy;
+bool Timer::busy(){ 
+    return active;
 }
 
 void Timer::refresh(){
