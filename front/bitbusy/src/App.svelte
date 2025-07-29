@@ -2,10 +2,13 @@
   import Busy from './lib/Busy.svelte'
   import Pause from './lib/Pause.svelte'
   import Clock from './lib/Clock.svelte';
+  import String from './lib/String.svelte';
   import { load } from './main';
   import { onMount } from 'svelte';
   import Select from './lib/Select.svelte';
   import { select } from './select';
+    import Send from './lib/Send.svelte';
+    import Color from './lib/Color.svelte';
 
   onMount(load);
 </script>
@@ -24,13 +27,22 @@
       </div>
    </div>
       <div class="flex flex-col items-center gap-2">
-        {#if $select != 0}
+        {#if $select == 3}
+          <String />
+          <Color />
+        {/if}
+        {#if $select == 1 || $select == 2}
           <Clock />
         {/if}
         <Select />
-        <Busy />
-        {#if $select != 0}
-        <Pause />
+        {#if $select == 3}
+          <Send />
+        {/if}
+        {#if $select != 3}
+          <Busy />
+        {/if}
+        {#if $select == 1 || $select == 2}
+          <Pause />
         {/if}
     </div>
   </div>

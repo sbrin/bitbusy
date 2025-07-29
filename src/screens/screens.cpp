@@ -33,7 +33,7 @@ void free(Adafruit_NeoMatrix &matrix, int &frame){
         matrix.drawBitmap(1, 1, available, 30, 7, COLOR_TEXT);
     }
     matrix.show();
-    frame += 1;
+    frame++;
 }
 
 void busy_time(Adafruit_NeoMatrix &matrix, int &frame, int timeleft){
@@ -84,7 +84,7 @@ void busy_time(Adafruit_NeoMatrix &matrix, int &frame, int timeleft){
     }
     
     matrix.show();
-    frame += 1;
+    frame++;
 }
 
 void busy(Adafruit_NeoMatrix &matrix, int &frame){
@@ -106,6 +106,37 @@ void busy(Adafruit_NeoMatrix &matrix, int &frame){
     }
     
     matrix.show();
-    frame += 1;
+    frame++;
 }
 
+void running_string(Adafruit_NeoMatrix &matrix, int &frame, String text, int color){
+    matrix.clear();
+    matrix.drawBitmap(0, 0, fill, 32, 8, color);
+    matrix.setFont(&Petme8x8);
+    matrix.setTextWrap(false);
+    matrix.setTextColor(COLOR_TEXT);
+    matrix.setCursor(matrix.width() - frame, 9);
+    matrix.print(text);
+
+    int16_t x1, y1;
+    uint16_t w, h;
+
+    matrix.getTextBounds(text, 0, 0, &x1, &y1, &w, &h);
+
+    int displayWidth = matrix.width();
+    int gap = 3;
+    int totalWidth = w + gap;
+
+    int x = displayWidth - frame;
+
+    matrix.setCursor(x, 9); 
+    matrix.print(text);
+
+    if (frame >= totalWidth + displayWidth) {
+        frame = 0;
+    } else {
+        frame++;
+    }
+
+    matrix.show();
+}

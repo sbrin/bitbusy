@@ -2,10 +2,16 @@ import { time } from "./timer";
 import { busy } from "./busy";
 import { get } from "svelte/store";
 import { select } from "./select";
+import { color, hexToRGB565, text } from "./running";
 
 export async function updateDevice(){
-    const req = { "busy": get(busy), "time": get(time), "pomodoro": get(select) == 2 }
-
+    var req = {};
+    if(get(select) == 3){
+        req = { "running": true, "color": hexToRGB565(get(color)), "text": get(text)}
+    }
+    else{
+        req = { "busy": get(busy), "time": get(time), "pomodoro": get(select) == 2 }
+    }
     try{
         const response = await fetch('/api/busy', {
             method: 'POST',

@@ -17,21 +17,30 @@ void busy(AsyncWebServer &server, Timer &timer, State &state){
             request->send(400, "text/plain", "Bad Request");
             return;
         }
-
-        state.setBusy(doc["busy"].as<bool>());
-        state.setTime(doc["time"].as<int>());
-
-        if(doc["busy"].as<bool>()){
-            state.setPomodoro(doc["pomodoro"].as<bool>());
-            timer.set(doc["time"].as<int>());
-            timer.start();    
+        
+        if(doc["running"].is<bool>()){
+            if(doc["running"].as<bool>()){
+                state.setRunning(doc["running"].as<bool>());
+                state.setColor(doc["color"].as<int>());
+                state.setText(doc["text"].as<String>());
+            }
         }
         else{
-            state.setPomodoro(false);
-            timer.stop();
-        }
+            state.setRunning(false);
+            state.setBusy(doc["busy"].as<bool>());
+            state.setTime(doc["time"].as<int>());
 
-        request->send(200, "text/plain", String(timer.left()));
+            if(doc["busy"].as<bool>()){
+                state.setPomodoro(doc["pomodoro"].as<bool>());
+                timer.set(doc["time"].as<int>());
+                timer.start();    
+            }
+            else{
+                state.setPomodoro(false);
+                timer.stop();
+            }
+        }
+        request->send(200, "text/plain", "OK");
     });
 
     server.on("/api/busy", HTTP_GET, [&timer, &state](AsyncWebServerRequest *request){

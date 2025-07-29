@@ -1,6 +1,5 @@
 <script lang="ts">
     import { pause, toggle } from "../pause";
-    import { select } from "../select";
     
     $: img = $pause ? "pause.png" : "resume.png"
 
