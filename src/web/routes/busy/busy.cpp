@@ -45,11 +45,17 @@ void busy(AsyncWebServer &server, Timer &timer, State &state){
 
     server.on("/api/busy", HTTP_GET, [&timer, &state](AsyncWebServerRequest *request){
         JsonDocument doc;
-        doc["busy"] = state.getBusy();
-        doc["time"] = timer.left();
-        doc["pomodoro"] = state.getPomodoro();
-        doc["settime"] = state.getSettime();
-        
+        if(state.getRunning()){
+            doc["running"] = state.getRunning();
+            doc["text"]  = state.getText();
+            doc["color"] = state.getColor();
+        }
+        else{
+            doc["busy"] = state.getBusy();
+            doc["time"] = timer.left();
+            doc["pomodoro"] = state.getPomodoro();
+            doc["settime"] = state.getSettime();
+        }
         String response;
         serializeJson(doc, response);
 

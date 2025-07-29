@@ -7,6 +7,7 @@ import App from './App.svelte'
 import { get } from 'svelte/store'
 import { select } from './select'
 import { settime } from './timer'
+import { text, color, rgb565ToHex } from './running'
 
 const app = mount(App, {
   target: document.getElementById('app')!,
@@ -22,20 +23,26 @@ export async function load(){
         }
       const data = await response.json();
 
-      console.log(data);
-      busy.set(data.busy);
-      settime.set(data.settime);
-      time.set(data.time);
-      
-      if(data.pomodoro){
-        select.set(2);
-      }
+      if(data.running){
+        select.set(3);
+        color.set(rgb565ToHex(data.color));
+        text.set(data.text);
+      } else{
+        console.log(data);
+        busy.set(data.busy);
+        settime.set(data.settime);
+        time.set(data.time);
 
-      if(get(time) == -1){
-        select.set(0);
-      } else {
-        if(data.pomodoro || data.busy){
-          start();
+        if(data.pomodoro){
+          select.set(2);
+        }
+
+        if(get(time) == -1){
+          select.set(0);
+        } else {
+          if(data.pomodoro || data.busy){
+            start();
+          }
         }
       }
 

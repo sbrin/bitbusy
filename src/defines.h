@@ -4,8 +4,8 @@
 #define MATRIX_WIDTH 32 
 #define MATRIX_HEIGHT 8
 
-#define SSID "ssid"
-#define PASSWORD "password"
+#define SSID "GlutenRoom"
+#define PASSWORD "ikJ$4rtY"
 
 #define HOSTNAME "bitbusy"
 #define OTA_PASSWORD "bitbusy"
