@@ -1,12 +1,12 @@
 # Bitbusy Agent Guide
 
 ## Build Commands
-- **ESP32 Firmware**: `pio run -e seeed_xiao_esp32c3` (build), `pio run -e seeed_xiao_esp32c3 --target upload` (upload)
+- **ESP32 Firmware**: `pio run -e <Desired ESP32 board>` (build), `pio run -e seeed_xiao_esp32c3 --target upload` (upload)
 - **Web Frontend**: `cd front/bitbusy && npm run build` (build), `npm run check` (lint/type check)
 - **Full Build**: `./build_page.sh` (builds frontend and copies to data/dist for ESP32 filesystem)
 
 ## Architecture
-**Hardware**: ESP32-C3 with WS2812 LED matrix (32x8), configured in `src/defines.h`
+**Hardware**: ESP32 with WS2812 LED matrix (32x8), configured in `src/defines.h`
 **Firmware**: C++/Arduino framework using PlatformIO. Core modules: `screens/` (display logic), `state/` (mode management), `timer/` (countdown), `web/` (HTTP API)
 **Frontend**: Svelte 5 + TypeScript + Vite, serves as ESP32 web interface
 **Communication**: ESPAsyncWebServer REST API between frontend and firmware
