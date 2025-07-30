@@ -33,8 +33,7 @@ Project written in C++ using PlatformIO and Arduino framework. Images and animat
 - **ESP32 Based board** (Seeed XIAO ESP32C3 recommended)
 - **WS2812 LED Matrix** (32x8 pixels)
 - **USB-C cable** (for programming and power)
-- **Breadboard and jumper wires** (for prototyping)
-- **Laser cutter** (optional, for enclosure)
+- **Laser cutter or a 3D printer** (optional, for enclosure)
 
 ### Step 1: Hardware Assembly
 
