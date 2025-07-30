@@ -46,7 +46,7 @@ Project written in C++ using PlatformIO and Arduino framework. Images and animat
 - **WS2812 LED Matrix** (32x8 pixels)
 - **USB-C cable** (for programming and power)
 - **Breadboard and jumper wires** (for prototyping)
-- **3D printer** (optional, for enclosure)
+- **Laser cutter** (optional, for enclosure)
 
 ### Step 1: Hardware Assembly
 
@@ -58,7 +58,7 @@ Project written in C++ using PlatformIO and Arduino framework. Images and animat
 
 #### Enclosure (Optional)
 - Use the provided blueprint: `blueprint/box.dxf`
-- Print the enclosure parts
+- Cut the enclosure parts using a laser cutter
 - Mount the ESP32-C3 and LED matrix inside
 - Ensure proper ventilation for the ESP32
 
