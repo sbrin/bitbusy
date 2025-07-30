@@ -30,7 +30,7 @@ Project written in C++ using PlatformIO and Arduino framework. Images and animat
 - **Git** (for cloning the repository)
 
 #### Hardware Requirements
-- **ESP32-C3** (Seeed XIAO ESP32C3 recommended)
+- **ESP32 Based board** (Seeed XIAO ESP32C3 recommended)
 - **WS2812 LED Matrix** (32x8 pixels)
 - **USB-C cable** (for programming and power)
 - **Breadboard and jumper wires** (for prototyping)
@@ -39,7 +39,7 @@ Project written in C++ using PlatformIO and Arduino framework. Images and animat
 ### Step 1: Hardware Assembly
 
 #### Basic Connection
-1. Connect the LED matrix to the ESP32-C3:
+1. Connect the LED matrix to the ESP32:
    - **VCC** → **3.3V** (or 5V if your matrix supports it)
    - **GND** → **GND**
    - **DIN** → **GPIO 2** (configurable in `src/defines.h`)
@@ -47,7 +47,7 @@ Project written in C++ using PlatformIO and Arduino framework. Images and animat
 #### Enclosure (Optional)
 - Use the provided blueprint: `blueprint/box.dxf`
 - Cut the enclosure parts using a laser cutter
-- Mount the ESP32-C3 and LED matrix inside
+- Mount the ESP32 and LED matrix inside
 - Ensure proper ventilation for the ESP32
 
 ### Step 2: Software Setup
@@ -88,15 +88,15 @@ cd bitbusy
 #### Upload to ESP32
 ```bash
 # Build and upload the firmware
-pio run -e seeed_xiao_esp32c3 --target upload
+pio run -e <Your target board> --target upload
 
 # Upload the filesystem (web interface)
-pio run -e seeed_xiao_esp32c3 --target uploadfs
+pio run -e <Your target board> --target uploadfs
 ```
 
 ### Step 4: First Boot and Configuration
 
-1. **Power on** the ESP32-C3
+1. **Power on** the ESP32
 2. **Connect to WiFi**: The device will automatically connect using your configured credentials
 3. **Access the web interface**: Open a browser and navigate to `http://bitbusy.local` or the IP address shown in the serial monitor
 
@@ -113,8 +113,9 @@ pio run -e seeed_xiao_esp32c3 --target uploadfs
 #### OTA Updates
 The device supports Over-The-Air updates. To update firmware:
 ```bash
-pio run -e seeed_xiao_esp32c3 --target upload
+pio run -e <Your target board> --target upload --upload-port <ESP_IP_or_hostname> --upload-flags "--auth=bitbusy"
 ```
+You can also change the default OTA password in configuration and in the ```--auth=bitbusy``` section of this command.
 
 ### Troubleshooting
 
@@ -130,7 +131,7 @@ pio run -e seeed_xiao_esp32c3 --target upload
    - Monitor serial output for connection status
 
 3. **Web Interface Not Loading**:
-   - Ensure filesystem was uploaded: `pio run -e seeed_xiao_esp32c3 --target uploadfs`
+   - Ensure filesystem was uploaded: `pio run <Your target board> --target uploadfs`
    - Check if device is connected to WiFi
    - Try accessing via IP address instead of hostname
 
