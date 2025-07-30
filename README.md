@@ -143,13 +143,13 @@ You can also change the default OTA password in configuration and in the ```--au
 #### Development Commands
 ```bash
 # Build firmware only
-pio run -e seeed_xiao_esp32c3
+pio run -e <Your target board>
 
 # Monitor serial output
 pio device monitor
 
 # Clean build
-pio run -e seeed_xiao_esp32c3 --target clean
+pio run -e <Your target board> --target clean
 
 # Build frontend only
 cd front/bitbusy && npm run build
