@@ -50,23 +50,23 @@ void busy_time(Adafruit_NeoMatrix &matrix, int &frame, int timeleft){
     time += String(seconds);
 
     if(frame < 68){
-        matrix.drawBitmap(1 + frame, 1, working, 30, 7, COLOR_TEXT);
-        matrix.drawBitmap(-100 + frame, 1, working, 30, 7, COLOR_TEXT);
-        matrix.drawBitmap(-35 + frame, 1, restricted, 7, 7, COLOR_TEXT);
-        matrix.drawBitmap(-26 + frame, 1, dnd, 22, 7, COLOR_TEXT);
-        matrix.setCursor(-67 + frame, 1);
+        matrix.drawBitmap(1 - frame, 1, working, 30, 7, COLOR_TEXT);
+        matrix.drawBitmap(101 - frame, 1, working, 30, 7, COLOR_TEXT);
+        matrix.drawBitmap(34 - frame, 1, restricted, 7, 7, COLOR_TEXT);
+        matrix.drawBitmap(43 - frame, 1, dnd, 22, 7, COLOR_TEXT);
+        matrix.setCursor(69 - frame, 1);
         matrix.print(time);
     }   
     else if(frame < 101){
-        matrix.setCursor(1, 1);
+        matrix.setCursor(2, 1);
         matrix.print(time);
     }
-    else if(frame < 136){
-        matrix.drawBitmap(-135 + frame, 1, working, 30, 7, COLOR_TEXT);
-        matrix.setCursor(-100 + frame, 1);
+    else if(frame < 134){
+        matrix.drawBitmap(134 - frame, 1, working, 30, 7, COLOR_TEXT);
+        matrix.setCursor(102 - frame, 1);
         matrix.print(time);
     }
-    else if(frame < 168){
+    else if(frame < 170){
         matrix.drawBitmap(1, 1, working, 30, 7, COLOR_TEXT);
     }
     else{
