@@ -112,9 +112,9 @@ pio run -e <Your target board> --target uploadfs
 #### OTA Updates
 The device supports Over-The-Air updates. To update firmware:
 ```bash
-pio run -e <Your target board> --target upload --upload-port <ESP_IP_or_hostname> --upload-flags "--auth=bitbusy"
+pio run -e <Your target board> --target upload --upload-port <ESP_IP_or_hostname>
 ```
-You can also change the default OTA password in configuration and in the ```--auth=bitbusy``` section of this command.
+You can also change the default OTA password in configuration.
 
 ### Troubleshooting
 
