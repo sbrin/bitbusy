@@ -10,21 +10,22 @@ void connecting(Adafruit_NeoMatrix &matrix){
 void free(Adafruit_NeoMatrix &matrix, int &frame){
     matrix.clear();
     matrix.drawBitmap(0, 0, fill, 32, 8, COLOR_GREEN);
-    if(frame < 95){
+    if(frame < 103){
         if(frame < 60){
             matrix.drawBitmap(1 - frame, 1, available, 30, 7, COLOR_TEXT);
         }
         else{
-            matrix.drawBitmap(95 - frame, 1, available, 30, 7, COLOR_TEXT);
+            matrix.drawBitmap(103 - frame, 1, available, 30, 7, COLOR_TEXT);
         }
 
+        matrix.drawBitmap(35 - frame, 1, online, 7, 7, COLOR_TEXT);
         matrix.setTextColor(COLOR_TEXT);
         matrix.setTextWrap(false);
         matrix.setFont(&Petme8x8);
-        matrix.setCursor(35 - frame, 9);
+        matrix.setCursor(43 - frame, 9);
         matrix.print("WELCOME");
     }
-    else if(frame < 130){
+    else if(frame < 140){
         matrix.drawBitmap(1, 1, available, 30, 7, COLOR_TEXT);
     }
     else{
