@@ -1,7 +1,7 @@
 <img src="front/bitbusy/public/busy.png" height=100> 
 
 # Bitbusy   ![img](https://hackatime-badge.hackclub.com/U091LS2TL8M/bitbusy)
-Bitbusy is an LED bar based on an ESP32 microcontroller and WS2812 LEDs that indicates your work status, so your colleagues won't distract you. 20$ alternative to the Busy Bar that I've made for my mother's birthday
+Bitbusy is an LED bar based on an ESP32 microcontroller and WS2812 LEDs that indicates your work status, so your colleagues won't distract you.
 ### Build and configure
 Configure your device in ```src/defines.h```. Then, use ```./build-page.sh``` to build the webpage. Then build and upload the filesystem image in PlatformIO. And only then upload the firmware.
 To build the hardware, just connect your LED matrix to a desired port and set it in the defines. You can also use my blueprint from ```blueprint/box.dxf```. 
