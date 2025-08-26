@@ -9,7 +9,7 @@ To build the hardware, just connect your LED matrix to a desired port and set it
 <img src="img/build.jpg" height=200> 
 
 ### Technologies
-Project written in C++ using PlatformIO and Arduino framework. Images and animations made in https://lopaka.app . Uses ESPAsyncWebServer and ArduinoJSON for web stuff and Adafruit GFX for graphics. Webpage written in Svelte and Typescript.
+Project written in C++ using PlatformIO and Arduino framework. Images and animations made in [lopaka](https://lopaka.app/editor/11044/). Uses ESPAsyncWebServer and ArduinoJSON for web stuff and Adafruit GFX for graphics. Webpage written in Svelte and Typescript.
 
 ---
 
