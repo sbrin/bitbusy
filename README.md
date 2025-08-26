@@ -1,5 +1,5 @@
 # <img src="front/bitbusy/public/busy.png" height=30 /> Bit:busy     
-![lopaka](https://custom-icon-badges.demolab.com/badge/lopaka-bitbusy-orange?logo=lopaka&link=https%3A%2F%2Flopaka.app%2Feditor%2F11044%2F) ![hackatime](https://hackatime-badge.hackclub.com/U091LS2TL8M/bitbusy)   
+[![lopaka](https://custom-icon-badges.demolab.com/badge/lopaka-bitbusy-orange?logo=lopaka&link=https%3A%2F%2Flopaka.app%2Feditor%2F11044%2F) ![hackatime](https://hackatime-badge.hackclub.com/U091LS2TL8M/bitbusy)](https://lopaka.app/editor/11044/)
 
 Bitbusy is an LED bar based on an ESP32 microcontroller and WS2812 LEDs that indicates your work status, so your colleagues won't distract you.
 ### Build and configure
