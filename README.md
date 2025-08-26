@@ -1,6 +1,6 @@
 <img src="front/bitbusy/public/busy.png" height=100> 
 
-# Bitbusy   ![img](https://hackatime-badge.hackclub.com/U091LS2TL8M/bitbusy)
+# Bitbusy   ![lopaka](https://custom-icon-badges.demolab.com/badge/lopaka-bitbusy-orange?logo=lopaka&link=https%3A%2F%2Flopaka.app%2Feditor%2F11044%2F) ![hackatime](https://hackatime-badge.hackclub.com/U091LS2TL8M/bitbusy)
 Bitbusy is an LED bar based on an ESP32 microcontroller and WS2812 LEDs that indicates your work status, so your colleagues won't distract you.
 ### Build and configure
 Configure your device in ```src/defines.h```. Then, use ```./build-page.sh``` to build the webpage. Then build and upload the filesystem image in PlatformIO. And only then upload the firmware.
